@@ -554,4 +554,8 @@ Trả lời ngắn gọn, có số liệu, và nếu phù hợp hãy đề xuấ
     except Exception:
         return {"answer": local_ai(db, data.question), "mode": "fallback", "provider": "local"}
 
-app.mount("/static", StaticFiles(directory=BASE_DIR / "app" / "static"), name="static")
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
+app.mount("/static", StaticFiles(directory=BASE_DIR), name="static")
